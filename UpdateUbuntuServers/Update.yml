@@ -1,0 +1,13 @@
+---
+ - name: update Ubuntu Servers
+   hosts: all
+   tasks:
+     - name: Update OS
+       apt:
+         name: '*'
+         state: latest
+
+     - name: Upgrading Ubuntu Servers
+       apt:
+         upgrade: dist
+         force_apt_get: yes
