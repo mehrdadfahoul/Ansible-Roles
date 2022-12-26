@@ -1,0 +1,16 @@
+---
+ - name: Create User on ubuntu
+   hosts: all
+   tasks:
+     - name: Create a user on Ubuntu
+       user:
+         name: mehrdad
+         group: root
+         state: present
+         shell: /bin/bash
+
+
+     - name: Password
+       user:
+         name: mehrdad
+         password: "{{ '{{ 12345678900 }}' | password_hash('sha512','12345678900') }}"
