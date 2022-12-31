@@ -12,7 +12,7 @@
          upgrade: dist
          force_apt_get: yes
 
-     - name: waiting for installing curl
+     - name: Installing curl
        apt:
          name: curl
          state: present
@@ -42,7 +42,7 @@
          repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
          state: present
      
-     - name: install Docker
+     - name: Starting install Docker
        apt:
          name: docker-ce
          state: present
