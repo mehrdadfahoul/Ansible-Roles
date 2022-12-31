@@ -12,7 +12,7 @@
          upgrade: dist
          force_apt_get: yes
 
-     - name: install curl
+     - name: waiting for installing curl
        apt:
          name: curl
          state: present
