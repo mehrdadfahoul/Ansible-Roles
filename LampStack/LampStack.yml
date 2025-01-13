@@ -1,0 +1,46 @@
+# Deploy LampStack
+
+- name: Deploy LampStack on Ubuntu
+  hosts: web
+  become: yes
+  tasks:
+    - name: Update and Upgrade OS
+      apt:
+        update_cache: yes
+        upgrade: dist
+    - name: Install Apache2
+      apt:
+        name: apache2
+        state: present
+    - name: Install Mysql
+      apt:
+        name: mysql-server
+        state: present
+    - name: install PHP
+      apt:
+        name: php
+        state: present
+    - name: PHP modules
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - php-mysql
+        - php-cli
+    - name: Start Service
+      service:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop:
+        - apache2
+        - mysql
+    - name: Create Test File for  testing PHP
+      copy:
+        dest: /var/www/html/info.php
+        content: |
+          <?php
+          phpinfo();
+          ?>
+
+

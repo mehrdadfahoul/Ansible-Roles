@@ -1,0 +1,10 @@
+[webserver]
+
+127.0.0.1 ansible_connection=local
+web ansible_host=192.168.8.131
+
+
+
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
